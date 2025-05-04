@@ -573,3 +573,83 @@ await user.save({ validateBeforeSave: false });
 ```
 
 > ⚠️ Use this only if you're sure the data is safe. It skips schema validation.
+
+
+🆕 `.insertMany()`
+- Inserts multiple documents into the database in a single operation.
+
+```js
+User.insertMany([{ name: 'Alice' }, { name: 'Charlie' }]);
+```
+
+`.findOneAndUpdate()`
+- Finds a document by a query, updates it, and returns the updated document.
+
+```js
+const user = await User.findOneAndUpdate(
+  { email: 'alice@example.com' },
+  { name: 'Alice Updated' },
+  { new: true } // returns the updated document
+);
+```
+
+`.findByIdAndUpdate()`
+- Finds a document by its `_id`, updates it, and returns the updated document.
+
+```js
+const user = await User.findByIdAndUpdate(
+  '60d71b2f6c55b66b29a7b5d8',
+  { name: 'Alice Updated' },
+  { new: true }
+);
+```
+
+`.findOneAndDelete()`
+- Finds a document and deletes it.
+
+```js
+const user = await User.findOneAndDelete({ email: 'alice@example.com' });
+```
+
+`.findByIdAndDelete()`
+- Finds a document by `_id` and deletes it.
+
+```js
+const user = await User.findByIdAndDelete('60d71b2f6c55b66b29a7b5d8');
+```
+
+`.updateOne()`
+- Updates a single document based on a query.
+
+```js
+await User.updateOne({ email: 'alice@example.com' }, { name: 'Alice Updated' });
+```
+
+`.updateMany()`
+- Updates multiple documents based on a query.
+
+```js
+await User.updateMany({ age: { $gt: 30 } }, { $set: { status: 'active' } });
+```
+
+`.replaceOne()`
+- Replaces a single document with the provided document.
+
+```js
+await User.replaceOne({ email: 'alice@example.com' }, { name: 'Alice New' });
+```
+
+`.deleteOne()`
+- Deletes a single document based on a query.
+
+```js
+await User.deleteOne({ email: 'alice@example.com' });
+```
+
+`.deleteMany()`
+- Deletes multiple documents based on a query.
+
+```js
+await User.deleteMany({ age: { $lt: 20 } });
+```
+
