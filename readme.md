@@ -652,4 +652,4 @@ await User.deleteOne({ email: 'alice@example.com' });
 ```js
 await User.deleteMany({ age: { $lt: 20 } });
 ```
-
+all sarting about the aggregation pipeline
